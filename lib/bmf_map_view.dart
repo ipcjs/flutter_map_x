@@ -4,26 +4,28 @@ import 'package:flutter_baidu_mapapi_map/flutter_baidu_mapapi_map.dart';
 import 'package:flutter_baidu_mapapi_base/flutter_baidu_mapapi_base.dart';
 
 class BmfMapView implements MapView {
-
   final page = const BmfMapViewPage();
 
   @override
-  Widget get mapView => page;
+  Widget build(BuildContext context) => page;
 
   @override
-  addMarker(dynamic markerView) {
+  addMarker(dynamic markerView) {}
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
   }
 }
 
 class BmfMapViewPage extends StatefulWidget {
-  const BmfMapViewPage({ Key? key }) : super(key: key);
+  const BmfMapViewPage({Key? key}) : super(key: key);
 
   @override
   _BmfMapViewPageState createState() => _BmfMapViewPageState();
 }
 
 class _BmfMapViewPageState extends State<BmfMapViewPage> {
-
   @override
   void initState() {
     super.initState();
@@ -72,4 +74,3 @@ class _BmfMapViewPageState extends State<BmfMapViewPage> {
     myMapController.addMarker(marker);
   }
 }
-

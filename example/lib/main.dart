@@ -18,11 +18,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
-
+  late final MapView _mapView;
   @override
   void initState() {
     super.initState();
     initPlatformState();
+    _mapView = MapView("1");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _mapView.dispose();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -31,8 +38,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await FlutterMap_x.platformVersion ?? 'Unknown platform version';
+      platformVersion = await FlutterMap_x.platformVersion ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -62,14 +68,13 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
         body: Center(
-          child: MapView("2").mapView,
+          child: _mapView.build(context),
         ),
       ),
     );
   }
 
-  _menuButtonOnPressed() {
+  void _menuButtonOnPressed() {
     MapView("2").addMarker(MarkerView("2").markerView);
   }
-  
 }
