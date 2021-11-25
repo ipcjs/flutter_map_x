@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_map_x/flutter_map_x.dart';
+import 'package:flutter_map_x/flutter_marker_x.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +52,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Plugin_map'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              tooltip: 'Open menu cart',
+              onPressed: _menuButtonOnPressed,
+            ),
+          ],
         ),
         body: Center(
           child: MapView("2").mapView,
@@ -59,4 +67,9 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+
+  _menuButtonOnPressed() {
+    MapView("2").addMarker(MarkerView("2").markerView);
+  }
+  
 }

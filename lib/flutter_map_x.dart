@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map_x/bmf_map_view.dart';
+import 'package:flutter_map_x/flutter_marker_x.dart';
 import 'package:flutter_map_x/gms_map_view.dart';
 
 class FlutterMap_x {
@@ -22,6 +23,9 @@ class FlutterMap_x {
 abstract class MapView {
   // dart没有interface关键字，因为所有的class默认都是interface
   Widget get mapView;
+
+  // addMarker;
+  addMarker(dynamic markerView);
 
   // 添加一个factory构造函数
   factory MapView(String type) {
