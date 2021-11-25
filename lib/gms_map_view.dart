@@ -1,18 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_x/flutter_map_x.dart';
+import 'package:flutter_map_x/flutter_marker_x.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GmsMapView implements MapView {
   @override
   Widget get mapView => GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: const CameraPosition(
           target: LatLng(
-            37.42796133580664,
-            -122.085749655962,
+            52.4478,
+            -3.5402,
           ),
           zoom: 14.4746,
         ),
-        onMapCreated: (GoogleMapController controller) {},
+        onMapCreated: (GoogleMapController controller) {
+    
+        },
+        markers: <Marker>{_createMarker()},
       );
+
+    Marker _createMarker() {
+   return const Marker(
+      markerId: MarkerId("marker_1"),
+      position: LatLng(52.4478, -3.5402),
+    );
+  }
+
+  @override
+  addMarker(dynamic markerView) {
+    print("add marker...");
+    print(markerView);
+    
+  }
 }
