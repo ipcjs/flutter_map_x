@@ -5,7 +5,10 @@
 
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_map_x/bmf_map_view.dart';
+import 'package:flutter_map_x/gms_map_view.dart';
 
 class FlutterMap_x {
   static const MethodChannel _channel = MethodChannel('flutter_map_x');
@@ -13,5 +16,17 @@ class FlutterMap_x {
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
+  }
+}
+
+abstract class MapView {
+  // dart没有interface关键字，因为所有的class默认都是interface
+  Widget get mapView;
+
+  // 添加一个factory构造函数
+  factory MapView(String type) {
+    if (type == '1') return GmsMapView();
+    if (type == '2') return BmfMapView();
+    throw 'Can\'t create $type.';
   }
 }
