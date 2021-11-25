@@ -11,6 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+
+  google_maps_flutter: ^2.1.1
+  flutter_baidu_mapapi_map: ^3.0.0+2
+  flutter_baidu_mapapi_search: ^3.0.0
+  flutter_baidu_mapapi_utils: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
